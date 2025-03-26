@@ -31,20 +31,30 @@ export default function PlatformOrders() {
                 </td>
               </tr>
             ) : (
-              platformOrders.map((order: any) => (
-                <tr key={order.orderId} className="hover:bg-gray-50 transition">
-                  <td className="px-4 py-2">{order.orderId}</td>
-                  <td className="px-4 py-2">{order.customerName}</td>
-                  <td className="px-4 py-2">${order.amount}</td>
-                  <td className="px-4 py-2">
-                    <span
-                      className={`px-2 py-1 text-xs font-semibold rounded `}
-                    >
-                      {order.status}
-                    </span>
-                  </td>
-                </tr>
-              ))
+              platformOrders.map(
+                (order: {
+                  orderId: number;
+                  customerName: string;
+                  amount: string;
+                  status: string;
+                }) => (
+                  <tr
+                    key={order.orderId}
+                    className="hover:bg-gray-50 transition"
+                  >
+                    <td className="px-4 py-2">{order.orderId}</td>
+                    <td className="px-4 py-2">{order.customerName}</td>
+                    <td className="px-4 py-2">${order.amount}</td>
+                    <td className="px-4 py-2">
+                      <span
+                        className={`px-2 py-1 text-xs font-semibold rounded `}
+                      >
+                        {order.status}
+                      </span>
+                    </td>
+                  </tr>
+                )
+              )
             )}
           </tbody>
         </table>
